@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'ComicLogo';
+    font-family: 'Montserrat', sans-serif;
+    src: url(assets/font/IhateComicSans.ttf),
+         url(assets/font/IhateComicSans.woff);
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'ComicSans';
+    src: url(assets/font/ComicSansMS.eot),
+        url(assets/font/ComicSansMS.ttf);
+}
+
+
+*{
+    font-family: Montserrat;
+}
+
+.logotipo{
+    font-family: ComicLogo;
+    letter-spacing: 5px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tituloPrincipal{
+    font-family: ComicSans;
+}
+
+.parrafoPrincipal{
+    font-family: ComicSans;
+    font-size: 1.2rem;
+}
+
+.form-control:focus{
+    box-shadow: none !important;
+    border-color: #29ba69 !important;
+}

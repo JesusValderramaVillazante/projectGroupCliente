@@ -1,0 +1,20 @@
+<header class="container-fluid px-2" style="background-color:rgb(61, 186, 93)">
+  <div class="container">
+    <div class="row justify-content-between py-2">
+        <div>
+            <a class="text-light logotipo" routerLink="/" style="text-decoration:none">group</a>
+        </div>
+        <div class="d-flex align-items-center">
+            <a *ngIf="logout" routerLink="/dashboard" class="text-light mr-4" style="text-decoration:none">
+                Dashboard
+            </a>
+            <a *ngIf="!logout" routerLink="/registro" class="btn btn-outline-light px-3" style="text-decoration:none">
+                Registrar
+            </a>
+            <a *ngIf="logout" routerLink="/" class="btn btn-outline-light px-3" style="text-decoration:none" (click)="logoutUser()">
+                Logout
+            </a>           
+        </div>
+    </div>    			 
+  </div>   
+</header>
