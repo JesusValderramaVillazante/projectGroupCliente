@@ -1,0 +1,5 @@
+.up:hover{
+    cursor: pointer;
+    background: #28a745;
+    color: #ffffff !important;
+}

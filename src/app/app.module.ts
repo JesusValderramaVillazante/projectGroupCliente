@@ -17,6 +17,7 @@ import { AuthService } from './services/auth.service';
 import { RegistroService } from './services/registro.service';
 import { StorageService } from './services/storage.service';
 import { GuardService } from './services/guard.service';
+import { UserService } from './services/user.service';
 
 /* Componentes */
 import { AppComponent } from './app.component';
@@ -26,12 +27,21 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PaginaPrincipalComponent } from './paginaPrincipal/paginaPrincipal.component';
 import { RegistroComponent } from './registro/registro.component';
-import { UserComponent } from './dashboard/user/user.component';
+import { PaginaUsuarioComponent } from './paginaUsuario/paginaUsuario.component';
+import { PerfilBlockComponent } from './paginaUsuario/perfil-block/perfil-block.component';
+import { EventosBlockComponent } from './paginaUsuario/eventos-block/eventos-block.component';
+import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
+import { FotoUsuarioComponent } from './perfil-usuario/foto-usuario/foto-usuario.component';
+import { DatosUsuarioComponent } from './perfil-usuario/datos-usuario/datos-usuario.component';
+import { CrearEventoComponent } from './crear-evento/crear-evento.component';
+
 
 const routes: Routes = [
   {path: '', component: PaginaPrincipalComponent},
   {path: 'registro', component: RegistroComponent},
-  {path: 'dashboard', component: UserComponent, canActivate: [GuardService]},
+  {path: 'perfil', component: PerfilUsuarioComponent, canActivate: [GuardService]},
+  {path: 'crearEvento', component: CrearEventoComponent, canActivate: [GuardService]},
+  {path: 'dashboard', component: PaginaUsuarioComponent, canActivate: [GuardService]},
   {path: '**', component: PaginaPrincipalComponent}
 ];
 
@@ -44,7 +54,13 @@ const routes: Routes = [
     FooterComponent,
     PaginaPrincipalComponent,
     RegistroComponent,
-    UserComponent
+    PaginaUsuarioComponent,
+    PerfilBlockComponent,
+    EventosBlockComponent,
+    PerfilUsuarioComponent,
+    FotoUsuarioComponent,
+    DatosUsuarioComponent,
+    CrearEventoComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +71,7 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule
   ],
-  providers: [RegistroService, AuthService, StorageService, GuardService],
+  providers: [RegistroService, AuthService, StorageService, GuardService, UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

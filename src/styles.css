@@ -23,19 +23,14 @@
     font-family: ComicLogo;
     letter-spacing: 5px;
     font-size: 24px;
-    font-weight: bold;
-}
-
-.tituloPrincipal{
-    font-family: ComicSans;
-}
-
-.parrafoPrincipal{
-    font-family: ComicSans;
-    font-size: 1.2rem;
 }
 
 .form-control:focus{
+    box-shadow: none !important;
+    border-color: #29ba69 !important;
+}
+
+.custom-select:focus{
     box-shadow: none !important;
     border-color: #29ba69 !important;
 }

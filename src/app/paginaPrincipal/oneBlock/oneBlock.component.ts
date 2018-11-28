@@ -70,16 +70,15 @@ export class OneBlockComponent implements OnInit {
 
   loginGoogle() {
     this.au.signInWithGoogle().then(result => {
-
       const saveRegistro = {
         nombre: result.user.providerData[0].displayName,
         email: result.user.providerData[0].email,
-        password: result.user.providerData[0].uid
+        password: result.user.providerData[0].uid,
+        fotoUrl: result.user.providerData[0].photoURL
       };
 
       this.registroService.postAuntenticar(saveRegistro.email, saveRegistro.password).subscribe((acceso: Resultado) => {
         if (acceso.response === false) {
-
           this.registroService.postRegistro(saveRegistro).subscribe((data: Resultado) => {
             if (data.response) {
               this.obtenerToken(saveRegistro.email, saveRegistro.password);
@@ -87,7 +86,6 @@ export class OneBlockComponent implements OnInit {
           }, error => {
             console.log(error);
           });
-
         } else {
           this.st.addToken(acceso.result);
           this.nz.run(() => {

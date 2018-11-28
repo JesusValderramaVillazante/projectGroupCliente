@@ -15,6 +15,10 @@ export class StorageService {
     }
   }
 
+  getAuthToken(): string {
+    return localStorage.getItem('APP-TOKEN');
+  }
+
   delToken(): void {
     localStorage.removeItem('APP-TOKEN');
   }

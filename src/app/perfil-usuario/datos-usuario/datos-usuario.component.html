@@ -1,0 +1,67 @@
+<div class="container-fluid px-2 pt-5 pb-5">
+  <div class="container px-0">
+    <div class="row mb-2 justify-content-center mx-0">
+      <div class="col col-lg-6 px-0 mb-3">
+        <h3 class="border-bottom pb-2">Perfil</h3>
+      </div>
+    </div>
+
+    <div *ngIf="datosActualizado" class="row justify-content-center mx-0">
+      <div class="col col-lg-6 px-0">    
+            <div class="alert alert-success pl-2" role="alert">
+              Datos actualizado!
+            </div>
+      </div>
+    </div>      
+
+    <div class="row mt-3 pb-4 justify-content-center mx-0">
+      <div class="col col-lg-6">
+        <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col mb-4 px-0">
+              <label for="nombre">Nombre y apellido</label>
+              <input formControlName="nombre" [(ngModel)]="datos.nombre" type="text" class="form-control" style="background: #f9fbfc"
+                id="nombre">
+              <small *ngIf="usuarioForm.controls.nombre.status === 'INVALID' && usuarioForm.controls.nombre.touched"
+                class="text-danger pt-1 mt-1 mb-0">
+                minimo 2, maximo 30 letras
+              </small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 mb-4 px-0 pr-0 pr-sm-2">
+              <label for="email">E-mail</label>
+              <input type="text" [(ngModel)]="datos.email" class="form-control mx-0" formControlName="email" id="email"
+                readonly>
+            </div>
+            <div class="col-sm-4 mb-4 px-0 pr-0 pl-sm-2">
+              <label for="fechaNacimiento">Fecha de nacimiento</label>
+              <input type="date" [(ngModel)]="datos.fechaNacimiento" class="form-control mx-0" formControlName="fechaNacimiento"
+                style="background: #f9fbfc" id="fechaNacimiento">
+            </div>
+          </div>
+          <div class="row border-bottom pb-4">
+            <div class="col mb-4 pl-0 pr-2">
+              <label for="numeroMovil">Movil</label>
+              <input type="text" [(ngModel)]="datos.numeroMovil" class="form-control mx-0" formControlName="numeroMovil"
+                style="background: #f9fbfc" id="numeroMovil">
+            </div>
+            <div class="col mb-4 pr-0 pl-2">
+              <label for="genero">Genero</label>
+              <select class="form-control mx-0" id="genero" [(ngModel)]="datos.genero" formControlName="genero" style="background: #f9fbfc">
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+              </select>
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="mt-4 px-0">
+              <a routerLink="/dashboard" class="text-success" style="text-decoration: none">Volver</a>
+              <button type="submit" class="btn btn-success ml-4" [disabled]="!usuarioForm.valid">Guardar perfil</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
