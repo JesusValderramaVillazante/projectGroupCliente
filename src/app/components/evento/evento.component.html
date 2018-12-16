@@ -1,0 +1,110 @@
+<div class="container-fluid px-2 mt-4 pb-5">
+  <div class="container">
+    <div class="row pb-4">
+      <div class="col-md-4 px-0 pr-md-4 mb-4">
+        <h5 class="border-bottom pb-3 mb-4 text-center text-md-left">
+          <i class="fas fa-info-circle"></i> Evento
+        </h5>
+        <ng-container *ngIf="event$">
+          <p><i class="fas fa-futbol pr-2 text-success"></i> <span class="text-secondary"> {{event$.Titulo }} </span></p>
+          <p><i class="fas fa-bus pr-2 text-success"></i> <span class="text-secondary"> {{ event$.Direccion }} </span></p>
+          <p><i class="fas fa-calendar-alt pr-2 text-success"></i> <span class="text-secondary"> {{ event$.Dia }}
+            </span></p>
+          <p><i class="far fa-clock pr-2 text-success"></i> <span class="text-secondary"> {{ event$.Hora }} </span></p>
+          <p><i class="fas fa-euro-sign pr-2 text-success"></i> <span class="text-secondary"> {{ event$.Precio }}
+            </span></p>
+          <p><i class="fas fa-user-friends text-success"></i> <span class="text-secondary"> {{ event$.Participantes }}
+            </span></p>
+          <p class="mb-3"><strong> Organizador </strong> </p>
+          <p><img src="{{ event$.fotoUrl }}" width="24" height="24" class="rounded-circle"> <span class="text-success pl-2">
+              {{ event$.organizador }} </span> </p>
+          <p><strong mb-3> Opciones </strong> </p>
+          <button class="btn btn-light btn-sm text-danger mr-3 mb-2" [disabled]="usuarioOrganiza" (click)="onClickborrarEvento(event$.Id)"><i class="fas fa-calendar-times pr-2"></i>Borrar evento</button>
+          <button class="btn btn-light btn-sm text-danger mb-2" [disabled]="usuarioApuntado" (click)="onClickborrarme(event$.Id)"><i class="fas fa-times-circle"></i> Borrarme</button>
+        </ng-container>
+      </div>
+
+      <div class="col-md-4 px-0 px-md-2 mb-2">
+        <h5 class="border-bottom pb-3 mb-4 text-center text-md-left">
+          <i class="fas fa-user-friends"></i> Participantes
+        </h5>
+        <div class="d-flex justify-content-center">
+          <div class="d-flex mb-3 flex-wrap w-100">
+
+            <div *ngFor="let participante of numerJuegadores" class="d-flex justify-content-center mb-3 w-50">
+              <div class="d-flex flex-column">
+                <div class="d-flex justify-content-center">
+
+                  <figure *ngIf="participante.fotoUrl" class="rounded-circle bg-light  my-0" style="max-width: 90px; overflow: hidden;">
+                    <img src="{{ participante.fotoUrl }}" class="img-fluid">
+                  </figure>
+
+                  <div *ngIf="!participante.fotoUrl" (click)="open(content)" class="rounded-circle text-muted border d-flex align-items-center justify-content-center jugadoresHover"
+                    style="width:90px; height: 90px; background: #f8fafb;">
+                    <small> apuntarme </small>
+                  </div>
+
+                </div>
+
+                <div *ngIf="participante.nombre" class="text-center"><small>{{ participante.nombre }}</small></div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 px-0 pl-md-4">
+        <h5 class="border-bottom pb-3 mb-4 text-center text-md-left">
+          <i class="fas fa-comment-alt"></i> Comentarios
+        </h5>
+
+
+        <form [formGroup]="chatEventoForm" (ngSubmit)="onSubmit()">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Envia un comentario" id="mensaje" style="background: #f8fafb" formControlName="mensaje" required>
+            <div class="input-group-append">
+              <button [disabled]="!chatEventoForm.valid" class="btn btn-success" type="submit" id="button-addon2"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </form>
+
+
+        <div class="border rounded mt-2 py-4 px-3" style="height:380px; overflow: scroll;">
+          <div class="mb-4" *ngFor=" let msn of mensajesChat | async | reverse">
+            <small class="d-block text-muted mb-2">{{msn.fecha}}</small>
+            <div> <img src="{{msn.fotoUrlUsuario}}" width="24" height="24" class="rounded-circle"> <span
+                class="text-success px-2">{{msn.nombreUsuario}}</span> <span>{{msn.mensaje}}</span> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header py-3" style="background: #f8fafb;">
+    <h4 class="modal-title text-success" id="modal-basic-title"> Confirma tu asistencia </h4>
+    <button type="button" class="close pt-4" aria-label="Close" (click)="modal.dismiss('cerrar')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+      <i class="fas fa-file-signature mr-2"></i>
+      <strong class="alert-heading">Normas del evento</strong>
+      <br>
+      <ul class="pl-4 pr-0">
+        <li><small class="text-secondary">El partido se realizara a pesar de las posibles inclemencias del tiempo, siendo unicamente suspendido cuando el organizador lo indique.</small></li>
+        <li><small class="text-secondary">Llegar 15 minutos antes del empieze del partido</small></li>
+        <li><small class="text-secondary">No se toleraran faltas de respeto al organizador, jugadores del partido.</small></li>
+        <li><small class="text-secondary">No se tolerara el juego brusco, expulsando al jugador que participe de esta manera.</small></li>
+        <li><small class="text-secondary">Al inscribirse en el evento, el jugador acepta todas las normas establecidas.</small></li>
+      </ul>
+  </div>
+
+  <div class="modal-footer mb-3 border-0">
+    <button type="button" class="btn btn-success" ngbAutofocus (click)="onClickApuntarse(event$.Id)">Apuntarme</button>
+  </div>
+</ng-template>

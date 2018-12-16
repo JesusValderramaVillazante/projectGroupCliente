@@ -1,0 +1,5 @@
+.jugadoresHover:hover{
+    cursor: pointer;
+    border: 1px solid #3dba5d !important;
+    color: #3dba5d !important;
+}

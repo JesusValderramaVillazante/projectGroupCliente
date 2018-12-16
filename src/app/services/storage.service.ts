@@ -26,4 +26,15 @@ export class StorageService {
   addToken(token): void {
     localStorage.setItem('APP-TOKEN', token);
   }
+
+  getAdminToken(): boolean {
+    const tokenString = localStorage.getItem('APP-TOKEN');
+    if (tokenString) {
+      const base64Url = tokenString.split('.')[1];
+      const base64 = base64Url.replace('-', '+').replace('_', '/');
+      const result = JSON.parse(window.atob(base64));
+      return result.data.EsAdmin;
+    }
+    return false;
+  }
 }

@@ -1,8 +1,12 @@
 const PROXY_CONFIG = [
     {
         context: [
+            "/evento/*/*",
+            "/evento/*",
+            "/auth/*",
+            "/usuario/*/*", 
             "/usuario/*",
-            "/auth/*"
+            "/admin/*",        
         ],
         target: "http://group.es",
         secure: false,

@@ -1,0 +1,95 @@
+<div class="container-fluid px-2 pt-5 pb-5" style="background: #f8fafb;">
+  <div class="container">
+    <div class="row mb-2 justify-content-center">
+      <div class="col col-lg-6 mb-2 px-0">
+        <h3 class="border-bottom pb-2">Crear evento</h3>
+      </div>
+    </div>
+
+    <div *ngIf="datosEvento" class="row justify-content-center">
+      <div class="col col-lg-6 px-0">    
+          <div class="alert alert-success pl-2" role="alert">
+            Evento creado correctamente!
+          </div>
+      </div>
+    </div>
+
+    <div class="row mt-2 pb-4 justify-content-center">
+      <div class="col col-lg-6">
+        <form [formGroup]="registroEventoForm" (ngSubmit)="onSubmit()">
+
+          <div class="row mb-2">
+            <label for="nombre">Titulo <small class="text-muted">(Obligatorio)</small></label>
+            <input type="text" class="form-control" id="titulo" formControlName="titulo" required>
+          </div>
+
+          <div class="row mb-5">
+            <label for="descripcion">Descripción <small class="text-muted">(Obligatorio)</small></label>
+            <input type="text" class="form-control" id="descripcion" formControlName="descripcion" required>
+          </div>
+
+          <div class="row mb-2">
+            <label for="direccion">Dirección <small class="text-muted">(Obligatorio)</small></label>
+            <input type="text" class="form-control" id="direccion" formControlName="direccion" required>
+          </div>
+
+          <div class="row mb-5">
+            <div class="col-lg-6 px-0 pr-lg-2">
+              <label for="dia">Dia <small class="text-muted">(Obligatorio)</small></label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="far fa-calendar"></i></span>
+                </div>
+                <input type="date" class="form-control" id="dia" formControlName="dia" required>
+              </div>
+            </div>
+            <div class="col-lg-6 px-0 pl-lg-2">
+              <label for="hora">Hora <small class="text-muted">(Obligatorio)</small></label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="far fa-clock"></i></span>
+                </div>
+                <input type="time" class="form-control" id="hora" formControlName="hora" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-lg-6 px-0 pr-lg-2">
+              <label for="participantes">Participantes <small class="text-muted">(Obligatorio)</small></label>
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="participantes">Nº</label>
+                  </div>
+                  <select class="custom-select" id="participantes" formControlName="participantes" required>
+                    <option value="10">10</option>
+                    <option value="14" selected>14</option>
+                    <option value="16">16</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-lg-6 px-0 pl-lg-2">
+              <label for="precio">Precio <small class="text-muted">(Opcional)</small></label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input type="text" class="form-control" id="precio" formControlName="precio" required>
+              </div>
+                
+            </div>
+          </div>
+
+          <div class="row justify-content-end border-top">
+            <div class="mt-4">
+              <a routerLink="/eventos" class="text-success">volver</a>
+              <button type="submit" class="btn btn-success ml-4" [disabled]="!registroEventoForm.valid">Crear evento</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

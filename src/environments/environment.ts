@@ -8,5 +8,6 @@ export const environment = {
     projectId: 'proyectoclases-a8656',
     storageBucket: 'proyectoclases-a8656.appspot.com',
     messagingSenderId: '532355153237'
-  }
+  },
+  apiEndPoint: 'https://projectofinalgroup.000webhostapp.com/'
 };

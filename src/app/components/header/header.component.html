@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg py-0 navbar-dark px-2" style="background-color:rgb(61, 186, 93)">
+    <div class="container px-0">
+        <a class="navbar-brand logotipo" routerLink="/">group</a>
+
+        <button *ngIf="logout()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div *ngIf="logout()" class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mt-2 mt-lg-0">
+                <li *ngIf="isAdmin()" class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/admin">Admin</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/eventos">Eventos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/" (click)="logoutUser()">
+                        Logout<i class="fas fa-sign-out-alt pl-1"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div *ngIf="!logout()" class="justify-content-end">
+            <ul class="navbar-nav mt-2 mt-lg-0">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="btn btn-outline-light btn-sm" routerLink="/registro">
+                        Sign Up<i class="fas fa-sign-in-alt pl-1"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>

@@ -1,0 +1,12 @@
+.lista-evento:hover{
+    border: 1px solid#57a745 !important;
+}
+.lista-evento:hover .listaSelectHora{
+    border-bottom: 1px solid #57a745 !important;
+}
+.filtroText:hover{
+    cursor: pointer;
+}
+.filtroText{
+    color: #d4efdf;
+}

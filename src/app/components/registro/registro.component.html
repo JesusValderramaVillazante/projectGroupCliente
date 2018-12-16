@@ -1,0 +1,41 @@
+<div class="container-fluid px-2 mt-5">
+  <div class="container">
+    <div class="row" style="padding-bottom: 80px">
+      <div class="d-flex col px-0 justify-content-center">
+        <div>
+          <div class="text-center mb-4">
+            <a routerLink="/"> <img src="assets/img/logotipo.png" alt="groups" width="70px" height="90px"> </a>
+          </div>
+          <h4 class="text-center mb-3">Registrate</h4>
+          <div class="card" style="width: 20rem; background: #f9fbfc">
+            <div class="card-body">
+
+              <!--inicio formulario de registro -->
+              <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+                <div class="form-group mb-2">
+                  <label for="nombreUsuario" class="mb-1">Nombre y Apellidos</label>
+                  <input type="text" class="form-control" id="nombreUsuario" formControlName="nombre" required>
+                </div>
+                <div class="form-group mb-2">
+                  <label for="emailUsuario" class="mb-1">Correo</label>
+                  <input type="email" class="form-control" id="emailUsuario" aria-describedby="emailHelp" formControlName="email" required>
+                </div>
+                <div class="form-group mb-2">
+                  <label for="passwordUsuario" class="mb-1">Contraseña</label>
+                  <input type="password" class="form-control" id="passwordUsuario" formControlName="password" required>
+                </div>
+                <button type="submit" [disabled]="!registroForm.valid" class="btn btn-success btn-block text-white mt-4 mb-2">Enviar</button>
+              </form>
+              
+              <small class="alert alert-danger px-2 py-1 d-block mt-1 mb-0" *ngIf="registroFormAlert && !registroForm.invalid">
+                Correo ya existe
+              </small>
+              <!--fin formulario de registro -->
+            </div>
+          </div>
+          <div class="text-center mt-3"> <a routerLink="/" class="text-success" style="text-decoration: none;"> Volver </a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

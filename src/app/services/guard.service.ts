@@ -5,9 +5,9 @@ import { StorageService } from './storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class GuardService implements CanActivate{
+export class GuardService implements CanActivate {
 
-  constructor(private st: StorageService, private router : Router) { }
+  constructor(private st: StorageService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.st.getToken()) {

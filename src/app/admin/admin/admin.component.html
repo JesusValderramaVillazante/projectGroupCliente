@@ -1,0 +1,41 @@
+<div class="container-fluid px-2 mt-4 pb-5">
+  <div class="container">
+    <div class="row mb-2">
+      <div class="col-lg-12 px-0">
+        <h3 class="mb-5 mt-2">Listado de Usuarios</h3>
+
+        <div class="input-group mb-3">
+            <input type="search" autofocus class="form-control py-0" placeholder="Buscar" [(ngModel)]="datosBuscar" (ngModelChange)="onModelChange()">
+        </div>
+
+        <div class="table-responsive-lg">
+          <table class="table table-hover">
+            <thead style="background: #f8fafb;">
+              <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>email</th>
+                <th>fotoUrl</th>
+                <th>fechaNacimiento</th>
+                <th>genero</th>
+                <th>numeroMovil</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let evento of eventos | async">
+                <th scope="row">{{evento.id}}</th>
+                <td>{{evento.nombre}}</td>
+                <td>{{evento.email}}</td>
+                <td><a href="{{evento.fotoUrl}}">{{evento.fotoUrl}}</a></td>
+                <td>{{evento.fechaNacimiento}}</td>
+                <td>{{evento.genero}}</td>
+                <td>{{evento.numeroMovil}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
