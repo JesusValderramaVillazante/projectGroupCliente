@@ -8,12 +8,12 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  urlGetData = 'https://projectofinalgroup.000webhostapp.com/usuario/datos';
-  urlPostFoto = 'https://projectofinalgroup.000webhostapp.com/usuario/fotoPerfil';
-  urlPutUser = 'https://projectofinalgroup.000webhostapp.com/usuario/actualizar';
-  urlGetParticipa = 'https://projectofinalgroup.000webhostapp.com/usuario/participa/';
-  urlGetOrganiza = 'https://projectofinalgroup.000webhostapp.com/usuario/organiza/';
-  urlDeleteUser = 'https://projectofinalgroup.000webhostapp.com/usuario/eliminar';
+  urlGetData = '/usuario/datos';
+  urlPostFoto = '/usuario/fotoPerfil';
+  urlPutUser = '/usuario/actualizar';
+  urlGetParticipa = '/usuario/participa/';
+  urlGetOrganiza = '/usuario/organiza/';
+  urlDeleteUser = '/usuario/eliminar';
 
   constructor(private http: HttpClient, private st: StorageService) {
   }

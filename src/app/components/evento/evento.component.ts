@@ -144,8 +144,11 @@ export class EventoComponent implements OnInit {
   onClickborrarEvento(idEvento) {
     this.es.deleteEventoBorrar(idEvento).subscribe(result => {
       if (result.response) {
+        this.modalService.dismissAll();
         this.router.navigate(['eventos']);
       }
+    }, error => {
+      console.warn(error);
     });
   }
 

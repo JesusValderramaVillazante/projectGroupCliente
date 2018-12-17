@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg py-0 navbar-dark px-2" style="background-color:rgb(61, 186, 93)">
+<nav class="navbar navbar-expand-lg py-1 navbar-dark px-2" style="background-color:rgb(61, 186, 93)">
     <div class="container px-0">
-        <a class="navbar-brand logotipo" routerLink="/">group</a>
+        <a class="navbar-brand logotipo" routerLink="/"><img src="assets/img/logo.png" width="64px" alt="group"></a>
 
         <button *ngIf="logout()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,7 +8,7 @@
         </button>
 
         <div *ngIf="logout()" class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mt-2 mt-lg-0">
+            <ul class="navbar-nav mt-lg-0">
                 <li *ngIf="isAdmin()" class="nav-item" routerLinkActive="active">
                     <a class="nav-link" routerLink="/admin">Admin</a>
                 </li>

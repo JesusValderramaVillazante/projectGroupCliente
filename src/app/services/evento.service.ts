@@ -8,13 +8,13 @@ import { Resultado } from '../models/Resultado';
   providedIn: 'root'
 })
 export class EventoService {
-  private urlCrearEvento = 'https://projectofinalgroup.000webhostapp.com/evento/crear';
-  private urlObtenerEvento = 'https://projectofinalgroup.000webhostapp.com/evento/obtener/';
-  private urlObtenerEventoJugarId = 'https://projectofinalgroup.000webhostapp.com/evento/jugar/';
-  private urlApuntarseEvento = 'https://projectofinalgroup.000webhostapp.com/evento/participar';
-  private urlParticipanteEvento = 'https://projectofinalgroup.000webhostapp.com/evento/participantes/';
-  private urlBorrarseEvento = 'https://projectofinalgroup.000webhostapp.com/evento/borrarme/';
-  private urlBorrarEvento = 'https://projectofinalgroup.000webhostapp.com/evento/borrar/';
+  private urlCrearEvento = '/evento/crear';
+  private urlObtenerEvento = '/evento/obtener/';
+  private urlObtenerEventoJugarId = '/evento/jugar/';
+  private urlApuntarseEvento = '/evento/participar';
+  private urlParticipanteEvento = '/evento/participantes/';
+  private urlBorrarseEvento = '/evento/borrarme/';
+  private urlBorrarEvento = '/evento/borrar/';
 
   constructor(private http: HttpClient, private st: StorageService) {
   }
