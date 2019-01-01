@@ -1,5 +1,5 @@
-# Group
+# Proyecto Group
 
-## Documentacion
+## Presentación
 
-[Prezi](https://prezi.com/p/5eyfieh-zrwk/).
+[Prezi](https://prezi.com/p/5eyfieh-zrwk/)

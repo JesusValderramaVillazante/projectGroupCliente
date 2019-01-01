@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RegistroService {
-  urlRegistro = '/usuario/nuevo';
-  urlAuntenticar = '/auth/auntenticar';
+  urlRegistro = 'http://u363930042.hostingerapp.com/usuario/nuevo';
+  urlAuntenticar = 'http://u363930042.hostingerapp.com/auth/auntenticar';
 
   constructor(private http: HttpClient) {}
 

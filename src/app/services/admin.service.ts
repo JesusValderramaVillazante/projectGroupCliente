@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AdminService {
-  private urlGetEventos = '/admin/usuarios';
+  private urlGetEventos = 'http://u363930042.hostingerapp.com/admin/usuarios';
 
   constructor(private http: HttpClient, private st: StorageService) {
   }

@@ -8,13 +8,13 @@ import { Resultado } from '../models/Resultado';
   providedIn: 'root'
 })
 export class EventoService {
-  private urlCrearEvento = '/evento/crear';
-  private urlObtenerEvento = '/evento/obtener/';
-  private urlObtenerEventoJugarId = '/evento/jugar/';
-  private urlApuntarseEvento = '/evento/participar';
-  private urlParticipanteEvento = '/evento/participantes/';
-  private urlBorrarseEvento = '/evento/borrarme/';
-  private urlBorrarEvento = '/evento/borrar/';
+  private urlCrearEvento = 'http://u363930042.hostingerapp.com/evento/crear';
+  private urlObtenerEvento = 'http://u363930042.hostingerapp.com/evento/obtener/';
+  private urlObtenerEventoJugarId = 'http://u363930042.hostingerapp.com/evento/jugar/';
+  private urlApuntarseEvento = 'http://u363930042.hostingerapp.com/evento/participar';
+  private urlParticipanteEvento = 'http://u363930042.hostingerapp.com/evento/participantes/';
+  private urlBorrarseEvento = 'http://u363930042.hostingerapp.com/evento/borrarme/';
+  private urlBorrarEvento = 'http://u363930042.hostingerapp.com/evento/borrar/';
 
   constructor(private http: HttpClient, private st: StorageService) {
   }

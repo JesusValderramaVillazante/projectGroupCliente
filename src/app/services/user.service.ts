@@ -8,12 +8,12 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  urlGetData = '/usuario/datos';
-  urlPostFoto = '/usuario/fotoPerfil';
-  urlPutUser = '/usuario/actualizar';
-  urlGetParticipa = '/usuario/participa/';
-  urlGetOrganiza = '/usuario/organiza/';
-  urlDeleteUser = '/usuario/eliminar';
+  urlGetData = 'http://u363930042.hostingerapp.com/usuario/datos';
+  urlPostFoto = 'http://u363930042.hostingerapp.com/usuario/fotoPerfil';
+  urlPutUser = 'http://u363930042.hostingerapp.com/usuario/actualizar';
+  urlGetParticipa = 'http://u363930042.hostingerapp.com/usuario/participa/';
+  urlGetOrganiza = 'http://u363930042.hostingerapp.com/usuario/organiza/';
+  urlDeleteUser = 'http://u363930042.hostingerapp.com/usuario/eliminar';
 
   constructor(private http: HttpClient, private st: StorageService) {
   }

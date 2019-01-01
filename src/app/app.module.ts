@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule} from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs);
+
 import { environment } from '../environments/environment';
 
 /* Modulos nativos */
@@ -10,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminModule } from './admin/admin.module';
 
 /* Services */
@@ -44,6 +48,7 @@ import { ReversePipe } from './pipes/reverse.pipe';
 
 /* Rutas */
 import { AppRoutingModule } from './app-routing.module';
+import { DomSeguroPipe } from './pipes/dom-seguro.pipe';
 
 @NgModule({
   declarations: [
@@ -63,7 +68,8 @@ import { AppRoutingModule } from './app-routing.module';
     CrearEventoComponent,
     EventoComponent,
     FillPipe,
-    ReversePipe
+    ReversePipe,
+    DomSeguroPipe
   ],
   imports: [
     BrowserModule,
@@ -77,7 +83,14 @@ import { AppRoutingModule } from './app-routing.module';
     AdminModule,
     AppRoutingModule,
   ],
-  providers: [RegistroService, AuthService, StorageService, GuardService, UserService, AdminService],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es' },
+    RegistroService,
+    AuthService,
+    StorageService,
+    GuardService,
+    UserService,
+    AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
