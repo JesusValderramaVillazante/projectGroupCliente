@@ -8,58 +8,43 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  urlGetData = 'http://u363930042.hostingerapp.com/usuario/datos';
-  urlPostFoto = 'http://u363930042.hostingerapp.com/usuario/fotoPerfil';
-  urlPutUser = 'http://u363930042.hostingerapp.com/usuario/actualizar';
-  urlGetParticipa = 'http://u363930042.hostingerapp.com/usuario/participa/';
-  urlGetOrganiza = 'http://u363930042.hostingerapp.com/usuario/organiza/';
-  urlDeleteUser = 'http://u363930042.hostingerapp.com/usuario/eliminar';
+  urlGetData = `${environment.baseUrl}usuario/datos`;
+  urlPostFoto = `${environment.baseUrl}usuario/fotoPerfil`;
+  urlPutUser = `${environment.baseUrl}usuario/actualizar`;
+  urlGetParticipa = `${environment.baseUrl}usuario/participa/`;
+  urlGetOrganiza = `${environment.baseUrl}usuario/organiza/`;
+  urlDeleteUser = `${environment.baseUrl}usuario/eliminar`;
 
   constructor(private http: HttpClient, private st: StorageService) {
   }
 
+  httpOptions(): object {
+    return { headers: new HttpHeaders({ 'APP-TOKEN': this.st.getAuthToken() }) };
+  }
+
   getUser(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({'APP-TOKEN': this.st.getAuthToken()})
-    };
-    return this.http.get(this.urlGetData, httpOptions);
+    return this.http.get(this.urlGetData, this.httpOptions());
   }
 
   postFoto(foto: File): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({'APP-TOKEN': this.st.getAuthToken()})
-    };
-
     const formData: FormData = new FormData();
     formData.append('fotoUrl', foto, foto.name);
-    return this.http.post(this.urlPostFoto, formData, httpOptions);
+    return this.http.post(this.urlPostFoto, formData, this.httpOptions());
   }
 
   putUser(datos): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({'APP-TOKEN': this.st.getAuthToken()})
-    };
-    return this.http.put(this.urlPutUser, datos, httpOptions);
+    return this.http.put(this.urlPutUser, datos, this.httpOptions());
   }
 
   getParticipa(idEvento): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({'APP-TOKEN': this.st.getAuthToken()})
-    };
-    return this.http.get(`${this.urlGetParticipa}${idEvento}`, httpOptions);
+    return this.http.get(`${this.urlGetParticipa}${idEvento}`, this.httpOptions());
   }
 
   getOrganiza(idEvento): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({'APP-TOKEN': this.st.getAuthToken()})
-    };
-    return this.http.get(`${this.urlGetOrganiza}${idEvento}`, httpOptions);
+    return this.http.get(`${this.urlGetOrganiza}${idEvento}`, this.httpOptions());
   }
 
   deleteUser(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({'APP-TOKEN': this.st.getAuthToken()})
-    };
-    return this.http.delete(this.urlDeleteUser, httpOptions);
+    return this.http.delete(this.urlDeleteUser, this.httpOptions());
   }
 }

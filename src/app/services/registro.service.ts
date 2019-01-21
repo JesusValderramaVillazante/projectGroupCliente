@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistroService {
-  urlRegistro = 'http://u363930042.hostingerapp.com/usuario/nuevo';
-  urlAuntenticar = 'http://u363930042.hostingerapp.com/auth/auntenticar';
+  urlRegistro = `${environment.baseUrl}usuario/nuevo`;
+  urlAuntenticar = `${environment.baseUrl}auth/auntenticar`;
 
   constructor(private http: HttpClient) {}
 
